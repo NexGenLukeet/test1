@@ -3,6 +3,5 @@
 </script>
 
 <template>
-  <div>你好</div>
-  <RouterView />
+    <div>你好</div>
 </template>
