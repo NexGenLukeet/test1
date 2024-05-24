@@ -1,11 +1,12 @@
 <script setup>
 import loginForm from '../../components/accountComponents/loginForm.vue';
+import loginHeader from '../../components/accountComponents/loginHeader.vue';
 
 </script>
 
 <template>
     <div class="logintopcontainer">
-
+        <loginHeader></loginHeader>
     </div>
     <div class="loginwelcomecontainer">
         登录后展示自己

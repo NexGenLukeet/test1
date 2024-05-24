@@ -26,9 +26,32 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 
 
-### 记录merge;
+### 记录分支变化。
 1. 合并了feature-account分支，feature-account分支添加了axios（本应该是dev分支要做的），未起冲突；
 2. 合并了feature-mainpage分支，该分支封装了一个hook,未起冲突。
+
+## 网络请求流程。
+page ajax trigger(path,params) ->
+first check -> 
+    FALSE page feedback ->
+    TRUE go next ->
+    find API (forbid chang params)->
+        axios function encapsulation ->
+        axios config ->
+        axios interceptors request ->
+        axios check &&  -> 
+            FALSE page feedback ->
+            TRUE fetch xmlhttprequest ->
+                --------------
+        axios interceptors response ->
+    find API back ->
+frist check ->
+feedback page ->
+
+
+
+
+
 
 
 ## dev-feature分支，这是项目要求的子分支，全部完成宣告项目结束

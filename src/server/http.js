@@ -14,7 +14,8 @@ const http = {
             method: 'post',
             url
         }
-        if (params) config.data = params
+        if (params) config.data = params;
+        console.log('post请求触发')
         return request(config)
     },
     put(url, params) {

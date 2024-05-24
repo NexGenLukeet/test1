@@ -1,12 +1,15 @@
 <script setup>
 import { ref } from 'vue';
+import { useAxiosAPI } from '../../hooks/requesthooks/useAxiosAPI.js';
+
 
 let email = ref('emial');
 let password = ref('');
 
-const vaild  = (event) => {
-    if(event.key == 'Enter'){
+const vaild = (event) => {
+    if (event.key == 'Enter') {
         console.log('开始提交')
+        useAxiosAPI('/common/user/login')
     }
 }
 
@@ -22,10 +25,10 @@ const vaild  = (event) => {
 
 <style>
 .logininput {
-    outline:none;
+    outline: none;
     border: none;
 
-    width:100%;
+    width: 100%;
     height: 44px;
     color: #000;
     background: rgba(238, 238, 238, 0.36);
