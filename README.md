@@ -11,6 +11,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 ## dev分支开发分支，禁止在dev-fix出现的时候更改，谨慎在feature分支出现时更改。
 1.完成基础的环境配置。同时分出experiment分支（用于测试组合式函数和公共组件是否在环境中有效）。
+2.新建账号分支
 
 ## dev-fix ,出问题就创建，解决好就删去，每次必须完成，并且及时合并到dev分支。这里用于记录出现的bug;和修改的思路；
 
