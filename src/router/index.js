@@ -11,7 +11,7 @@ import loginView from '../view/accountView/loginView.vue';
 import signupView from '../view/accountView/signupView.vue';
 
 const routes = [
-  { path: '/', redirect: '/home/mainpage' },
+  { path: '/', redirect: '/account/login' },
   {
     path: '/home', component: home,
     children: [
@@ -21,8 +21,8 @@ const routes = [
   {
     path: '/account', component: account,
     children: [
-      { path: '/login', component: loginView },
-      { path: '/signup', component: signupView }
+      { path: 'login', component: loginView },
+      { path: 'signup', component: signupView }
     ]
   }
 
