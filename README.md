@@ -20,6 +20,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 ## dev-feature分支，每次创建都代表一个功能的产生；这里用于记录每个分支。每次正在进行的分支最少有两个，这是为了处理冲突的情况，值得注意的是，不要持续的太久，
 1. 现在开始兵分两路；一个是feature-account 和 feature-mainpage.这是模拟协同开发。
 2. 目前三个分支 dev  feature-account feature-mainpage.
+3. feature-mainpage 分支是和feature-account一起创建的，feature-account中添加了网络请求和路由的一些情况，现在回到feature-mainpage，看看主页如何操作。
 
 ### feature-account 分支的记录
 
