@@ -1,10 +1,16 @@
 <script setup>
+import searchicon from '../../components/mainPageComponents/searchicon.vue';
+import videochange from '../../components/mainPageComponents/videochange.vue';
 </script>
 
 <template>
     <!-- 这里一个搜索页面，一个主要内容的展示 -->
-    <div class="searchviewcontainer"></div>
-    <div class="mainshowvideocontainer"></div>
+    <div class="searchviewcontainer">
+        <searchicon></searchicon>
+    </div>
+    <div class="mainshowvideocontainer">
+        <videochange></videochange>
+    </div>
 </template>
 
 <style>
