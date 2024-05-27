@@ -1,18 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-// import { useAxiosAPI } from '../../hooks/requesthooks/useAxiosAPI.js';
-import {postlogin} from '../../API/login.js';
+import { useAxiosAPI } from '../../hooks/requesthooks/useAxiosAPI.js';
+
 
 let email = ref('emial');
 let password = ref('');
 
-const vaild = (event) => {
-    if (event.key == 'Enter') {
-        // console.log('开始提交')
-        // useAxiosAPI('/common/user/login')
-        postlogin();
-    }
-}
 
 </script>
 <template>
@@ -20,7 +13,7 @@ const vaild = (event) => {
         <input type="text" v-model="email" class="logininput">
     </div>
     <div>
-        <input type="text" v-model="password" class="logininput" @keydown="vaild($event)">
+        <input type="text" v-model="password" class="logininput" >
     </div>
 </template>
 

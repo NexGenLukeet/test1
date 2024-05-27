@@ -6,12 +6,13 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const gotosignup = () => {
-    console.log(router)
+    // console.log(router)
     router.push({ path: '/account/signup' })
 }
 
 const goback = () => {
     console.log('000asdf')
+    router.push({path:'/home/mainpage'})
 }
 // console.log(router)
 

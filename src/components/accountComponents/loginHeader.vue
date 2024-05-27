@@ -5,7 +5,6 @@ const signupaccount = () => {
     emit('gotosignup')
 }
 const goback = () => {
-    console.log('-------')
     emit('goback')
 }
 </script>
