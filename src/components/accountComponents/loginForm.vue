@@ -8,8 +8,7 @@ let password = ref('');
 
 const vaild = (event) => {
     if (event.key == 'Enter') {
-        // console.log('开始提交')
-        // useAxiosAPI('/common/user/login')
+       
         postlogin();
     }
 }

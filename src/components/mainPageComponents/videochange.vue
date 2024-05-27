@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted, watch, unref } from 'vue'
 import { useTouchSpeed } from '../../hooks/useTouchSpeed.js'
-import svgheart from '../svgicon/svgheart.vue'
+import svgheart from '../svgicon/svgheart.vue';
+import svgtalk from '../svgicon/svgtalk.vue';
+import svglink from '../svgicon/svglink.vue';
 
 // 这是所有的视频数据。
 const prop = defineProps(['videosrcandpopular'])
@@ -31,6 +33,43 @@ const toptrans = ref(new Array(10).fill(0).map((ele, index) => index * 100));
 const isfast = ref(false);
 const ismorehalf = ref(false);
 const ismovedown = ref(false);
+
+const changeIndex = () => {
+    if (isfast.value) {
+        if (ismovedown.value) {
+            showIndex.value = showIndex.value + 1;
+        } else {
+            showIndex.value = showIndex.value - 1;
+        }
+    } else {
+        if (ismovedown.value) {
+            if (ismorehalf.value) {
+                showIndex.value = showIndex.value + 1;
+            }
+        } else {
+            if (ismorehalf.value) {
+                showIndex.value = showIndex.value - 1;
+            }
+        }
+    }
+}
+
+const endState = () => {
+    if (showIndex.value < 4) {
+        toptrans.value = new Array(10).fill(0).map((ele, index) => index * 100 - showIndex.value * 100);
+    } else {
+        toptrans.value = new Array(10).fill(0)
+            .map((ele, index) => index * 100 - 4 * 100)
+            .map((ele, index, array) => array[((index - (showIndex.value - 4)) % 10 + 10) % 10])
+            .map((ele) => ele);
+
+       
+
+
+
+    }
+  
+}
 /**
  * 效果部分：
  * 使用top来控制位置移动
@@ -45,53 +84,46 @@ watch(ychange, () => {
         // 这里有三种，一种是加，一种是减，一种是不变
         // 看一看时间；
         isfast.value = timechange.value < 100 ? true : false;
-        if (isfast.value) {
-            if (ismovedown.value) {
-                showIndex.value = showIndex.value + 1;
-            } else {
-                showIndex.value = showIndex.value - 1;
-            }
-        } else {
-            if (ismovedown.value) {
-                if (ismorehalf.value) {
-                    showIndex.value = showIndex.value + 1;
-                }
-            } else {
-                if (ismorehalf.value) {
-                    showIndex.value = showIndex.value - 1;
-                }
-            }
+        changeIndex();
+        endState();
+
+        for(let i = 0;i<10;i++){
+            dragcontainer.value.children[i].style.opacity = 1;
         }
-
-        if (showIndex.value < 4) {
-            toptrans.value = new Array(10).fill(0).map((ele, index) => index * 100 - showIndex.value * 100);
-        } else {
-            // toptrans.value = toptrans.value.map((ele, index, array) => array[((index + showIndex.value - 4) % 10 + 10) % 10])
-            toptrans.value = new Array(10).fill(0)
-                .map((ele, index) => index * 100 - 4 * 100)
-                .map((ele, index, array) => array[((index - showIndex.value - 4) % 10 + 10) % 10])
-                .map((ele) => ele);
-        }
-
-        console.log('第几个在展示', toptrans.value.findIndex(ele => ele == 0))
-
 
     } else {
         controlmovemooth.value = 'none';
+
         if (showIndex.value < 4) {
             toptrans.value = new Array(10).fill(0).map((ele, index) => index * 100 - showIndex.value * 100 + ychange.value);
         } else {
             toptrans.value = new Array(10).fill(0)
                 .map((ele, index) => index * 100 - 4 * 100)
-                .map((ele, index, array) => array[((index - showIndex.value - 4) % 10 + 10) % 10])
+                .map((ele, index, array) => array[((index - (showIndex.value - 4)) % 10 + 10) % 10])
                 .map((ele) => ele + ychange.value);
         };
         ismorehalf.value = Math.abs(ychange.value) > 50 ? true : false;
         ismovedown.value = ychange.value < 0 ? true : false;
+
+
+        for(let i = 0;i<10;i++){
+            if(((i - (showIndex.value - 4)) % 10 + 10) % 10 == 4){
+                // 这是正在显示的元素
+                // console.log( dragcontainer.value.children[i])
+                // console.log( 1 - ychange.value/100)
+                // dragcontainer.value.children[i-1].style.opacity = 1 + ychange.value/100;
+                dragcontainer.value.children[i].style.opacity = 1 + ychange.value/100;
+                dragcontainer.value.children[(i+1)%10].style.opacity = - ychange.value/100;
+            }
+        }
+       
     }
 })
 
 
+const playIndex = function (event, index) {
+    console.log(event.target.play())
+}
 const islike = ref(false);
 
 </script>
@@ -100,10 +132,12 @@ const islike = ref(false);
     <div class="videoviewcontainer" ref="dragcontainer">
         <div class="onevideocontainer" :style="{ top: `${toptrans[index]}%`, transition: controlmovemooth }"
             v-for="item, index in 10">
-            <video class="videoclass" :src="srcdata[index]" width="100%" height="300px"></video>
+            <video class="videoclass" :src="srcdata[index]" width="100%" height="300px"
+                @click="playIndex($event, index)"></video>
             <div class="iconcontainer" @click="islike = !islike">
-                
                 <svgheart v-model="islike"></svgheart>
+                <svgtalk></svgtalk>
+                <svglink></svglink>
             </div>
         </div>
 
