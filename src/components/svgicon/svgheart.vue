@@ -8,7 +8,7 @@ const model = defineModel()
 
 <template>
     <div>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" height="22px" width="22px">
             <path 
             :class="[model ? 'heartactive' : 'heartnormal', 'heart']" 
             :fill="model ? 'red' : 'white'" 
@@ -19,7 +19,9 @@ const model = defineModel()
              Q 90,60 50,90
              Q 10,60 10,30 z" 
              />
+             
         </svg>
+        
     </div>
 </template>
 <style>

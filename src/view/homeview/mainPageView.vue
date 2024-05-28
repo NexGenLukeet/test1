@@ -14,11 +14,7 @@ getvideos(1).then(res => {
 
 
 import { getcomment } from '../../API/getcomment.js';
-let commentShow = ref(false);
-const getcommentpage = () => {
-    console.log('asd;fkk;')
-    getcomment()
-}
+let commentShow = ref(true);
 
 </script>
 
@@ -32,8 +28,8 @@ const getcommentpage = () => {
         </videochange>
     </div>
     <Transition name="fade">
-        <div class="commentcontainer" v-if="commentShow" @click="commentShow = false">
-            <comment @changecomment="getcommentpage"></comment>
+        <div class="commentcontainer" v-if="commentShow">
+            <comment v-model="commentShow"></comment>
         </div>
     </Transition>
 
@@ -42,8 +38,7 @@ const getcommentpage = () => {
 <style>
 .searchviewcontainer {
     height: 50px;
-    width: 100vw;
-    background-color: black;
+    width: 50px;
 }
 
 .mainshowvideocontainer {
@@ -52,6 +47,7 @@ const getcommentpage = () => {
     width: 100vw;
     position: relative;
 }
+
 
 .commentcontainer {
     width: 100vw;

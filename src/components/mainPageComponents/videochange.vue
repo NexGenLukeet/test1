@@ -195,10 +195,13 @@ const isPlaying = ref([true, true, true, true, true, true, true, true, true, tru
 
 .iconcontainer {
     position: absolute;
-    height: 200px;
+    height: 150px;
     width: 50px;
     right: 0;
-    bottom: 0;
+    bottom: 130px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
 }
 
 .playcontainer {
@@ -210,5 +213,6 @@ const isPlaying = ref([true, true, true, true, true, true, true, true, true, tru
     margin: auto;
     width: 60px;
     height: 60px;
+    
 }
 </style>
