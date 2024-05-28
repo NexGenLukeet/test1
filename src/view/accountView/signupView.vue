@@ -5,15 +5,18 @@ import signupHeader from '../../components/accountComponents/signupHeader.vue';
 </script>
 
 <template>
-     <div class="logintopcontainer">
-        <signupHeader></signupHeader>
+    <div>
+        <div class="logintopcontainer">
+            <signupHeader></signupHeader>
+        </div>
+        <div class="loginwelcomecontainer">
+            注册
+        </div>
+        <div class="loginformcontainer">
+            <signupForm></signupForm>
+        </div>
     </div>
-    <div class="loginwelcomecontainer">
-        注册
-    </div>
-    <div class="loginformcontainer">
-        <signupForm></signupForm>
-    </div>
+
 </template>
 
 <style>

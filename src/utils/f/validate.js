@@ -19,13 +19,11 @@ const up = f => either => {
     }
 };
 
-
-validataList.map(up).reduce((a, b) => b(a), {
-    way: 'right',
-    error: '',
-    value: value
-})
-
-export default function(val,validateList){
-    
+export default function (val, validateList) {
+    let result =  validateList.map(up).reduce((a, b) => b(a), {
+        way: 'right',
+        error: '',
+        value: val
+    })
+    return result;
 }

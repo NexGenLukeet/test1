@@ -3,5 +3,5 @@
 </script>
 
 <template>
-    <div><</div>
+    <div @click="$router.back()"><</div>
 </template>

@@ -1,15 +1,22 @@
 <script setup>
-import { ref } from 'vue';
-// import { useAxiosAPI } from '../../hooks/requesthooks/useAxiosAPI.js';
-import {postlogin} from '../../API/login.js';
+import { ref, computed } from 'vue';
 
-let email = ref('emial');
+let email = ref('');
 let password = ref('');
+const right = computed(() => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value) && password.value.length > 6;
+})
+
+let emit = defineEmits(['loginRight'])
 
 const vaild = (event) => {
     if (event.key == 'Enter') {
-       
-        postlogin();
+        if(right.value == true){
+            emit('loginRight', 'data')
+        }else{
+            // 错误信息；
+        }
+        emit('loginRight', 'data')
     }
 }
 

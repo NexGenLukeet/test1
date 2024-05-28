@@ -6,28 +6,33 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const gotosignup = () => {
-    // console.log(router)
     router.push({ path: '/account/signup' })
 }
 
 const goback = () => {
-    console.log('000asdf')
-    router.push({path:'/home/mainpage'})
+    router.push({ path: '/home/mainpage' })
 }
-// console.log(router)
+
+import { postlogin } from '../../API/login.js';
+const logindata = (data) => {
+    postlogin();
+}
 
 </script>
 
 <template>
-    <div class="logintopcontainer">
-        <loginHeader @gotosignup="gotosignup" @goback="goback"></loginHeader>
+    <div>
+        <div class="logintopcontainer">
+            <loginHeader @gotosignup="gotosignup" @goback="goback"></loginHeader>
+        </div>
+        <div class="loginwelcomecontainer">
+            登录后展示自己
+        </div>
+        <div class="loginformcontainer">
+            <loginForm @loginRight="logindata"></loginForm>
+        </div>
     </div>
-    <div class="loginwelcomecontainer">
-        登录后展示自己
-    </div>
-    <div class="loginformcontainer">
-        <loginForm></loginForm>
-    </div>
+
 </template>
 
 <style>

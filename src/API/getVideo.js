@@ -2,6 +2,7 @@ import http from './index.js';
 
 async function getvideos(index) {
     // let result =  await http.get('/common/video/getPopularVideo');
+    // console.log(result);
     // console.log(result)
     // 先模拟数据；
     const res =
@@ -28,8 +29,6 @@ async function getvideos(index) {
             "{\"Video\":{\"userId\":\"b86abd1e-2e35-492b-9f7f-9e27a31aad86\",\"userAvatar\":\"/assets/avatar/default.png\",\"userNickname\":\"e35-4\",\"videoId\":\"588c36c6-8d0e-4722-b17a-34544559e5fd\",\"videoCover\":\"http://image2.pearvideo.com/cont/20181209/cont-1472363-11741084.jpg\",\"videoDesc\":\"5G网络将再次升级全社会智能化水平，未来人们将充分享受万物互联时代的安全与便利。本期《科技星声》带你感受上海联通5G的新体验。\",\"videoPath\":\"http://video.pearvideo.com/mp4/short/20181209/cont-1472363-13341710-hd.mp4\"},\"WSLCNum\":{\"shareNum\":\"6\",\"watchNum\":\"13\",\"commentNum\":\"0\",\"likeNum\":\"6\"}}"
         ]
     const parsedData = res.map(item => JSON.parse(item));
-
-    // console.log(parseData);
     const result = parsedData.splice(5 * index,5 * index  + 4)
     return result;
 }

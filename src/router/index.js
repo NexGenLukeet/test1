@@ -3,7 +3,10 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 // 主页一级路由
 import home from '../view/home.vue';
 // 对应的二级路由；
-import mainpage from '../view/homeview/mainPageView.vue'
+import mainpage from '../view/homeview/mainPageView.vue';
+import followView from '../view/homeview/followView.vue';
+import messageView from '../view/homeview/messageView.vue';
+
 
 // 账户的登录和注册
 import account from '../view/accountView.vue';
