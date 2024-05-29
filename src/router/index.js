@@ -15,12 +15,15 @@ import loginView from '../view/accountView/loginView.vue';
 import signupView from '../view/accountView/signupView.vue';
 
 // 专门处理搜索的视图；
-import search from '../view/searchView.vue'
+import search from '../view/searchView.vue';
+
+// 处理联系人的视图；
+import contracts from '../view/contractsView.vue'
 
 const routes = [
   // { path: '/', redirect: '/account/login' },
   // { path: '/', redirect: '/search' },
-  { path: '/', redirect: '/home/mainpage' },
+  { path: '/', redirect: '/contracts' },
   {
     path: '/home', component: home,
     children: [
@@ -40,6 +43,10 @@ const routes = [
   {
     path:'/search',
     component:search,
+  },
+  {
+    path:'/contracts',
+    component:contracts,
   }
 
 ]
