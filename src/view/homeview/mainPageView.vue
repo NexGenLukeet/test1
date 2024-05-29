@@ -20,7 +20,7 @@ let commentShow = ref(true);
 
 <template>
     <!-- 这里一个搜索页面，一个主要内容的展示 -->
-    <div class="searchviewcontainer">
+    <div class="searchviewcontainer" @click="$router.push('/search')">
         <searchicon></searchicon>
     </div>
     <div class="mainshowvideocontainer">

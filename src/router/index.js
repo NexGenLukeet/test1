@@ -19,6 +19,7 @@ import search from '../view/searchView.vue'
 
 const routes = [
   // { path: '/', redirect: '/account/login' },
+  // { path: '/', redirect: '/search' },
   { path: '/', redirect: '/home/mainpage' },
   {
     path: '/home', component: home,
