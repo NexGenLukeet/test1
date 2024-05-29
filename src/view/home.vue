@@ -8,13 +8,13 @@
             <RouterView />
         </div>
         <div class="bottomnav">
-            <div>首页</div>
-            <div>关注</div>
+            <div @click="$router.push('/home/mainpage')">首页</div>
+            <div @click="$router.push('/home/follow')">关注</div>
             <div>
                 <div class="plusicon">+</div>
             </div>
-            <div>消息</div>
-            <div>我</div>
+            <div @click="$router.push('/home/message')">消息</div>
+            <div @click="$router.push('/home/mine')">我</div>
         </div>
     </div>
 </template>

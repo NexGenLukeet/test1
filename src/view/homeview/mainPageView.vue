@@ -14,7 +14,7 @@ getvideos(1).then(res => {
 
 
 import { getcomment } from '../../API/getcomment.js';
-let commentShow = ref(true);
+let commentShow = ref(false);
 
 </script>
 
