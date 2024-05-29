@@ -2,8 +2,6 @@
  * element:document element
  * 返回的高度是相对于元素的百分比
  */
-
-
 import { ref, watch, onMounted } from 'vue';
 
 export function useTouchSpeed(element) {
@@ -45,11 +43,9 @@ export function useTouchSpeed(element) {
       element.value.addEventListener('touchstart', getinit);
       element.value.addEventListener('touchmove', getmoving);
       element.value.addEventListener('touchend', getend);
-      // console.log( element.value.getComputedStyle())
-      // console.log( window.getComputedStyle(element.value).getPropertyValue("height"))
+      
       const heightWithPx = window.getComputedStyle(element.value).getPropertyValue("height");
       const height = parseFloat(heightWithPx);
-      // console.log(height)
     }
   })
   return {

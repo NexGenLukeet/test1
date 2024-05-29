@@ -1,4 +1,23 @@
 <script setup>
+import { watch, ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter()
+const route = useRoute()
+const whichlight = ref(0);
+watch(() => route.path,
+    (val) => {
+        if(val == '/home/mainpage'){
+            whichlight.value = 0;
+        }else if(val == '/home/follow'){
+            whichlight.value = 1;
+        }else if(val == '/home/message'){
+            whichlight.value = 2;
+        }else{
+            whichlight.value = 3;
+        }
+       
+    }
+)
 
 </script>
 
@@ -8,13 +27,13 @@
             <RouterView />
         </div>
         <div class="bottomnav">
-            <div @click="$router.push('/home/mainpage')">首页</div>
-            <div @click="$router.push('/home/follow')">关注</div>
+            <div @click="$router.push('/home/mainpage')" :style="{color:whichlight == 0 ? 'white':'grey'}">首页</div>
+            <div @click="$router.push('/home/follow')" :style="{color:whichlight == 1 ? 'white':'grey'}">关注</div>
             <div>
                 <div class="plusicon">+</div>
             </div>
-            <div @click="$router.push('/home/message')">消息</div>
-            <div @click="$router.push('/home/mine')">我</div>
+            <div @click="$router.push('/home/message')" :style="{color:whichlight == 2 ? 'white':'grey'}">消息</div>
+            <div @click="$router.push('/home/mine')" :style="{color:whichlight == 3 ? 'white':'grey'}">我</div>
         </div>
     </div>
 </template>
@@ -29,6 +48,7 @@
 .homechildrencontainer {
     width: 100vw;
     height: calc(100vh - 50px);
+    overflow: hidden;
 }
 
 .bottomnav {
