@@ -20,10 +20,13 @@ import search from '../view/searchView.vue';
 // 处理联系人的视图；
 import contracts from '../view/contractsView.vue'
 
+// 编辑个人资料
+import edit from '../view/editMessage.vue'
+
 const routes = [
   // { path: '/', redirect: '/account/login' },
-  // { path: '/', redirect: '/search' },
-  { path: '/', redirect: '/home/message' },
+  { path: '/', redirect: '/edit' },
+  // { path: '/', redirect: '/home/message' },
   {
     path: '/home', component: home,
     children: [
@@ -47,6 +50,10 @@ const routes = [
   {
     path:'/contracts',
     component:contracts,
+  },
+  {
+    path:'/edit',
+    component:edit,
   }
 
 ]
