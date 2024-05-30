@@ -3,8 +3,10 @@ import messagebody from '../../components/messageComponents/messagebody.vue'
 import messageheader from '../../components/messageComponents/messageheader.vue'
 import messageindex from '../../components/messageComponents/messageindex.vue'
 
-const gotocontracts = ()=> {
-    console.log('gogogoogogog')
+import { useRouter } from 'vue-router'
+let router = useRouter()
+const gotocontracts = () => {
+    router.push('/contracts')
 }
 </script>
 <template>
@@ -20,21 +22,21 @@ const gotocontracts = ()=> {
 </template>
 
 <style>
-.messagecontainerheader{
-    height:50px;
+.messagecontainerheader {
+    height: 50px;
     background-color: black;
     position: relative;
 }
-.messagecontainerindex{
+
+.messagecontainerindex {
     height: 100px;
-    width:100vw;
+    width: 100vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.messagecontainerbody{
+.messagecontainerbody {
     height: calc(100vh - 200px);
 }
-
 </style>

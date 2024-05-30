@@ -1,8 +1,13 @@
 <script setup>
+import {useRouter}from 'vue-router';
+let router  = useRouter();
+const  backto = ()=>{
+    router.back()
+}
 </script>
 
 <template>
-    <div class="backbackback"><</div>
+    <div class="backbackback" @click="backto"><</div>
     <div class="thispagetitle">选择联系人</div>
 </template>
 

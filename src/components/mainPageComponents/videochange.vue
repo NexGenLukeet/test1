@@ -7,10 +7,10 @@ import svglink from '../svgicon/svglink.vue';
 
 // 这是所有的视频数据。
 const prop = defineProps(['videosrcandpopular'])
-// console.log(prop.videosrcandpopular)
+console.log(prop.videosrcandpopular)
 const emit = defineEmits('seecomment');
 
-const  seemessage = ()=>{
+const seemessage = () => {
     emit('seecomment')
 }
 
@@ -121,7 +121,7 @@ watch(ychange, () => {
                 dragcontainer.value.children[(i + 1) % 10].style.opacity = - ychange.value / 100;
             }
         }
-        
+
 
     }
 })
@@ -158,14 +158,23 @@ const isPlaying = ref([true, true, true, true, true, true, true, true, true, tru
     <div class="videoviewcontainer" ref="dragcontainer">
         <div class="onevideocontainer" :style="{ top: `${toptrans[index]}%`, transition: controlmovemooth }"
             v-for="item, index in 10" @click="playIndex($event, index)">
-            <video class="videoclass" :src="srcdata[index]" width="100%" height="300px" ></video>
-            <div class="iconcontainer" >
+            <video class="videoclass" :src="srcdata[index]" width="100%" height="300px"></video>
+            <div class="iconcontainer">
+                <div style="width: 40px; height: 40px;border-radius: 50%;overflow: hidden;border: 2px solid white;"><img style="width: 100%;height: 100%;" :src="'http://43.138.15.137:3000'+ prop.videosrcandpopular[index].Video.userAvatar" alt=""></div>
                 <svgheart v-model="islike" @click.stop="islike = !islike"></svgheart>
+                <div>{{ prop.videosrcandpopular[index].WSLCNum.likeNum }}</div>
                 <svgtalk @click.stop="seemessage"></svgtalk>
+                <div>{{ prop.videosrcandpopular[index].WSLCNum.commentNum }}</div>
                 <svglink></svglink>
+                <div>{{ prop.videosrcandpopular[index].WSLCNum.shareNum }}</div>
             </div>
             <div class="playcontainer" v-if="isPlaying[index]">
-                <svg t="1716798834057" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8830" width="48" height="48"><path d="M882.734114 459.147258l0.024559-0.024559L244.016061 21.12718l-0.199545 0.188288C230.582097 8.748245 212.62819 1.014096 192.840518 1.014096c-40.704051 0-73.699536 32.66905-73.699536 72.996524 0 22.148439-0.954745 65.513086 0 64.572668l0 373.422851 0 393.071354c0 0.325411 0 25.249057 0 44.935422 0 40.302915 32.995485 72.972988 73.699536 72.972988 19.862373 0 37.892005-7.78429 51.125401-20.466124l0.050142 0.025583 638.742613-437.982216-0.024559-0.038886c13.886265-13.270235 22.549575-31.889291 22.549575-52.531424 0-0.050142 0-0.088004 0-0.150426 0-0.050142 0-0.11154 0-0.149403C905.28369 491.048829 896.620379 472.41647 882.734114 459.147258z" p-id="8831" fill="#dbdbdb"></path></svg>
+                <svg t="1716798834057" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="8830" width="48" height="48">
+                    <path
+                        d="M882.734114 459.147258l0.024559-0.024559L244.016061 21.12718l-0.199545 0.188288C230.582097 8.748245 212.62819 1.014096 192.840518 1.014096c-40.704051 0-73.699536 32.66905-73.699536 72.996524 0 22.148439-0.954745 65.513086 0 64.572668l0 373.422851 0 393.071354c0 0.325411 0 25.249057 0 44.935422 0 40.302915 32.995485 72.972988 73.699536 72.972988 19.862373 0 37.892005-7.78429 51.125401-20.466124l0.050142 0.025583 638.742613-437.982216-0.024559-0.038886c13.886265-13.270235 22.549575-31.889291 22.549575-52.531424 0-0.050142 0-0.088004 0-0.150426 0-0.050142 0-0.11154 0-0.149403C905.28369 491.048829 896.620379 472.41647 882.734114 459.147258z"
+                        p-id="8831" fill="#dbdbdb"></path>
+                </svg>
             </div>
         </div>
 
@@ -195,13 +204,15 @@ const isPlaying = ref([true, true, true, true, true, true, true, true, true, tru
 
 .iconcontainer {
     position: absolute;
-    height: 150px;
+    height: 250px;
     width: 50px;
     right: 0;
-    bottom: 130px;
+    bottom: 50px;
     display: flex;
     flex-flow: column;
     justify-content: space-around;
+    color:white;
+    align-items: center;
 }
 
 .playcontainer {
@@ -213,6 +224,6 @@ const isPlaying = ref([true, true, true, true, true, true, true, true, true, tru
     margin: auto;
     width: 60px;
     height: 60px;
-    
+
 }
 </style>

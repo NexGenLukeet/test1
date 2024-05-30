@@ -1,23 +1,47 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, customRef, watch } from 'vue';
 
 let email = ref('');
-let password = ref('');
-const right = computed(() => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value) && password.value.length > 6;
-})
+// let password = ref('');
+// const right = computed(() => {
+//     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value) && password.value.length > 6;
+// })
 
 let emit = defineEmits(['loginRight'])
 
-const vaild = (event) => {
-    if (event.key == 'Enter') {
-        if(right.value == true){
-            emit('loginRight', 'data')
-        }else{
-            // 错误信息；
+
+let password = customRef((track, trigger) => {
+    let changedata = 'hahahaha';
+    let timerout = null;
+    return {
+        get() {
+            track()
+            return changedata
+        },
+        set(newvalue) {
+            clearTimeout(timerout);
+            timerout = setTimeout(() => {
+                changedata = newvalue;
+                trigger()
+            }, 1000)
         }
-        emit('loginRight', 'data')
     }
+})
+watch(password, (val) => {
+    console.log(val)
+})
+
+const vaild = (event) => {
+    // if (event.key == 'Enter') {
+    //     if(right.value == true){
+    //         emit('loginRight', 'data')
+    //     }else{
+    //         // 错误信息；
+    //     }
+    //     emit('loginRight', 'data')
+    // }
+    // testobj.value = '-----------------'
+    // testobj.value
 }
 
 </script>
@@ -27,6 +51,9 @@ const vaild = (event) => {
     </div>
     <div>
         <input type="text" v-model="password" class="logininput" @keydown="vaild($event)">
+    </div>
+    <div>
+        <button @click="vaild">test the function</button>
     </div>
 </template>
 

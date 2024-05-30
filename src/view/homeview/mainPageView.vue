@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref,watch } from 'vue';
 import searchicon from '../../components/mainPageComponents/searchicon.vue';
 import comment from '../../components/mainPageComponents/comment.vue';
 import { defineAsyncComponent } from 'vue';
@@ -15,6 +15,16 @@ getvideos(1).then(res => {
 
 import { getcomment } from '../../API/getcomment.js';
 let commentShow = ref(false);
+watch(commentShow,()=>{
+    if(commentShow.value == true){
+        // console.log(getcomment())
+        getcomment().then(res => {
+
+        })
+    }
+});
+
+
 
 </script>
 

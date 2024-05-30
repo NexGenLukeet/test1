@@ -23,7 +23,7 @@ import contracts from '../view/contractsView.vue'
 const routes = [
   // { path: '/', redirect: '/account/login' },
   // { path: '/', redirect: '/search' },
-  { path: '/', redirect: '/home/mine' },
+  { path: '/', redirect: '/home/message' },
   {
     path: '/home', component: home,
     children: [

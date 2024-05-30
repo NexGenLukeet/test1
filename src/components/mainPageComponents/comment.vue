@@ -14,7 +14,7 @@ const model = defineModel();
         <div class="commentclose">×</div>
     </div>
     <div class="commentbodycontainer" @click.stop>
-
+        
     </div>
     <div class="commentfooter" @click.stop>
         <input type="text">

@@ -13,7 +13,7 @@ const ychangeslow = computed(() => {
     return ychange.value / 5;
 })
 watch(ychangeslow, () => {
-    console.log(ychange.value)
+    // console.log(ychange.value)
     if (ychangeslow.value == 0) {
         scrollContainer.value.style.transition = '0.2s linear'
         imgContainer.value.style.transition = '0.2s linear'
