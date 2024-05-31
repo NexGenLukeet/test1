@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createMemoryHistory, createRouter ,createWebHashHistory} from 'vue-router'
 
 // 主页一级路由
 import home from '../view/home.vue';
@@ -59,7 +59,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 
