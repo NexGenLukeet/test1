@@ -7,7 +7,7 @@ import svglink from '../svgicon/svglink.vue';
 
 // 这是所有的视频数据。
 const prop = defineProps(['videosrcandpopular'])
-console.log(prop.videosrcandpopular)
+// console.log(prop.videosrcandpopular)
 const emit = defineEmits('seecomment');
 
 const seemessage = () => {
@@ -20,6 +20,11 @@ const seemessage = () => {
  */
 
 const srcdata = ref(prop.videosrcandpopular.map(ele => ele.Video.videoPath))
+// watch(prop.videosrcandpopular,()=>{
+//     if(prop.videosrcandpopular.length)
+// })
+
+
 /**
  * 交互：
  * 1.可以无限下滑，但是不能存在无数个div。按照20个，那么一次最多允许出现10个div;缓存5个，加载5个，展示缓存的最后一个

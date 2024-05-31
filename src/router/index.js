@@ -25,8 +25,8 @@ import edit from '../view/editMessage.vue'
 
 const routes = [
   // { path: '/', redirect: '/account/login' },
-  { path: '/', redirect: '/edit' },
-  // { path: '/', redirect: '/home/message' },
+  // { path: '/', redirect: '/edit' },
+  { path: '/', redirect: '/home/mainpage' },
   {
     path: '/home', component: home,
     children: [

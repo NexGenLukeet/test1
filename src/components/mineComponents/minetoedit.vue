@@ -1,11 +1,13 @@
 <script setup>
+import {ref}from 'vue';
+const isshow = ref(false);
 
 </script>
 <template>
-    <div class="pointpointpointicon">
+    <div class="pointpointpointicon" @click="isshow = !isshow">
         ...
-        <div class="changeorgetoutposition">
-            <div class="changemsgnav">修改个人资料</div>
+        <div class="changeorgetoutposition" v-show="isshow">
+            <div class="changemsgnav" @click.stop="$router.push('/edit')">修改个人资料</div>
             <div>注销</div>
         </div>
     </div>

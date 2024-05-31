@@ -3,12 +3,14 @@ import { reactive, ref,watch } from 'vue';
 import searchicon from '../../components/mainPageComponents/searchicon.vue';
 import comment from '../../components/mainPageComponents/comment.vue';
 import { defineAsyncComponent } from 'vue';
-const videochange = defineAsyncComponent(() => import('../../components/mainPageComponents/videochange.vue'))
+// const videochange = defineAsyncComponent(() => import('../../components/mainPageComponents/videochange.vue'))
+import videochange from '../../components/mainPageComponents/videochange.vue'
 
 let videodata = ref([])
 // 获取请求数据；这里一次性请求了20条，所以是存在问题的。把这些数据传递到内层；
 import { getvideos } from '../../API/getVideo.js';
 getvideos(1).then(res => {
+    console.log(res,'相应情况')
     videodata.value = res;
 });
 

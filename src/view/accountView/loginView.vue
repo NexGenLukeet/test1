@@ -21,7 +21,7 @@ const logindata = (data) => {
 </script>
 
 <template>
-    <div>
+    <div style="width: 100vw;height: 100vh;">
         <div class="logintopcontainer">
             <loginHeader @gotosignup="gotosignup" @goback="goback"></loginHeader>
         </div>

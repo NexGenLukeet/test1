@@ -24,7 +24,7 @@ const gotocontracts = () => {
 <style>
 .messagecontainerheader {
     height: 50px;
-    background-color: black;
+    background-color: #161622;
     position: relative;
 }
 
@@ -34,9 +34,11 @@ const gotocontracts = () => {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: #161622;
 }
 
 .messagecontainerbody {
     height: calc(100vh - 200px);
+    background-color: #161622;
 }
 </style>

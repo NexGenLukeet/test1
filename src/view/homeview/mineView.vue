@@ -37,22 +37,20 @@ watch(ychangeslow, () => {
             <div>
 
             </div>
-            
+
         </div>
-       
     </div>
     <div class="backpositionimg">
         <img ref="imgContainer" :style="{ transform: `scale(${(2 - (100 - ychangeslow) / 100) * 1})` }"
             style=" transform-origin:center ; height: 100%; width: 100%;"
             src="http://43.138.15.137/assets/img/281578538336_.pic_hd.e816ad71.jpg" alt="">
     </div>
- <div class="minerighttopnav">
-            <minetoedit></minetoedit>
-        </div>
+    <div class="minerighttopnav">
+        <minetoedit></minetoedit>
+    </div>
 </template>
 
 <style>
-
 .backpositionimg {
     position: absolute;
     top: 0;
@@ -79,11 +77,12 @@ watch(ychangeslow, () => {
     }
 }
 
-.selfmessage{
-    width:100vw;
+.selfmessage {
+    width: 100vw;
     position: relative;
 }
-.minerighttopnav{
+
+.minerighttopnav {
     position: fixed;
     z-index: 100000;
     top: 10px;
