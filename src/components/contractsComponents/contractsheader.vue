@@ -2,7 +2,8 @@
 import {useRouter}from 'vue-router';
 let router  = useRouter();
 const  backto = ()=>{
-    router.back()
+    // router.back()
+    router.push('/home/message')
 }
 </script>
 

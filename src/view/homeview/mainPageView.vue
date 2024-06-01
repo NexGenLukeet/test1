@@ -6,12 +6,16 @@ import { defineAsyncComponent } from 'vue';
 // const videochange = defineAsyncComponent(() => import('../../components/mainPageComponents/videochange.vue'))
 import videochange from '../../components/mainPageComponents/videochange.vue'
 
-let videodata = ref([])
+let videodata = ref(0)
 // 获取请求数据；这里一次性请求了20条，所以是存在问题的。把这些数据传递到内层；
 import { getvideos } from '../../API/getVideo.js';
 getvideos(1).then(res => {
     console.log(res,'相应情况')
+    console.log(videodata.value,'xinagigniiasdf')
+    // videodata.value = new Array(11)
     videodata.value = res;
+}).catch(()=>{
+    console.log('cuowu')
 });
 
 

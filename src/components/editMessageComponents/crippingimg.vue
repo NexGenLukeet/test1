@@ -14,23 +14,30 @@ onMounted(() => {
     bigimg.value.src = prop.imgbaseurl;
     // ctx.drawImage(img.value, 0, 0, canvas.value.width, canvas.value.height);
     // 先用小图片模拟，最后直接截取到
+
+
 });
 
 const imgcontainer = ref(null);
 const cripmovecontainer = ref(null);
 watch(imgcontainer, () => {
     if (imgcontainer.value) {
-        const imgwidth = window.getComputedStyle(imgcontainer.value).getPropertyValue("width");
-        const imgheight = window.getComputedStyle(imgcontainer.value).getPropertyValue("height");
-        //大容器和图片保持一致
-        cripmovecontainer.value.style.width = imgwidth;
-        cripmovecontainer.value.style.height = imgheight;
+        // 容器变化后
+        setTimeout(() => {
+            const imgwidth = window.getComputedStyle(imgcontainer.value).getPropertyValue("width");
+            const imgheight = window.getComputedStyle(imgcontainer.value).getPropertyValue("height");
+            //大容器和图片保持一致
+            cripmovecontainer.value.style.width = imgwidth;
+            cripmovecontainer.value.style.height = imgheight;
 
-        // 小容器200 * 200；里面的图片和图片保持一致大小
-        bigimg.value.style.width = imgwidth;
-        bigimg.value.style.height = imgheight;
-        bigwidth.value = imgwidth;
-        bigheight.value = imgheight;
+            // 小容器200 * 200；里面的图片和图片保持一致大小
+            bigimg.value.style.width = imgwidth;
+            bigimg.value.style.height = imgheight;
+
+            bigwidth.value = imgwidth;
+            bigheight.value = imgheight;
+        }, 10)
+
     }
 })
 /**
@@ -50,6 +57,7 @@ const temdragmoveY = ref(0);
 const temstartX = ref(0);
 const temstartY = ref(0);
 const starttouch = (event) => {
+
     temstartX.value = event.targetTouches[0].pageX;
     temstartY.value = event.targetTouches[0].pageY;
 }
@@ -73,16 +81,16 @@ const endmoveY = computed(() => {
     return dragmoveY.value + temdragmoveY.value;
 })
 
-const confirmcrip = ()=>{
+const confirmcrip = () => {
     // console.log(';aksdjf')
     // console.log(parseFloat(bigwidth.value) * endmoveX.value/100)
-    canvasctx.value.drawImage(img.value,-parseFloat(bigwidth.value) * endmoveX.value/100,-parseFloat(bigheight.value) * endmoveY.value/100,parseFloat(bigwidth.value),parseFloat(bigheight.value) )
+    canvasctx.value.drawImage(img.value, -parseFloat(bigwidth.value) * endmoveX.value / 100, -parseFloat(bigheight.value) * endmoveY.value / 100, parseFloat(bigwidth.value), parseFloat(bigheight.value))
 
-    setTimeout(()=>{
-        let result =  canvas.value.toDataURL()
+    setTimeout(() => {
+        let result = canvas.value.toDataURL()
         // console.log(result)
-        emit('editedimg',result)
-    },100)
+        emit('editedimg', result)
+    }, 100)
 }
 </script>
 <template>
@@ -95,7 +103,7 @@ const confirmcrip = ()=>{
         <div class="imgcenter1" ref="cripmovecontainer" @touchstart.stop="starttouch" @touchmove.stop="continuetouch"
             @touchend.stop="stoptouch">
             <div class="dragcontainer" :style="{ top: endmoveY + '%', left: endmoveX + '%' }">
-                <img ref="bigimg" :style="{ transform: `translate(${-endmoveX}%,${-endmoveY}%)` }">
+                <img ref="bigimg" :style="{ width: '100vw', transform: `translate(${-endmoveX}%,${-endmoveY}%)` }">
 
             </div>
         </div>
@@ -105,17 +113,18 @@ const confirmcrip = ()=>{
         <button>取消</button>
     </div>
     <div class="temcanvas">
-        <canvas ref="canvas" width="200" height="200" ></canvas>
+        <canvas ref="canvas" width="200" height="200"></canvas>
     </div>
-    
+
 </template>
 <style>
-.temcanvas{
+.temcanvas {
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 10000000;
 }
+
 .cripimgcontainer {
     height: 100vh;
     width: 100vw;

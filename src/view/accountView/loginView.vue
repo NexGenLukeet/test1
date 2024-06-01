@@ -13,9 +13,15 @@ const goback = () => {
     router.push({ path: '/home/mainpage' })
 }
 
+
+// import { useUserStore } from '@/store/user';
+import { useUserStore } from '../../store/useUserStore.js';
+const store = useUserStore();
 import { postlogin } from '../../API/login.js';
 const logindata = (data) => {
-    postlogin();
+    postlogin().then(res => {
+        store.userId = res.data.data.userId
+    });
 }
 
 </script>

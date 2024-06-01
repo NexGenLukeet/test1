@@ -6,6 +6,28 @@ import editform from '../components/editMessageComponents/editform.vue';
 import crippingimg from '../components/editMessageComponents/crippingimg.vue'
 import { ref } from 'vue'
 
+
+
+// 获取个人信息
+const userMessage = ref({
+    userNickname:'',
+    userDesc:'',
+    userGender:'',
+    userAge:'',
+    userAddress:'',
+});
+import {userTextAPI} from '../API/userTextAPI.js'
+userTextAPI('0c34a42d-f0e1-4f13-ad18-c6cdf7ccc060').then(res => {
+    return res.data.data
+}).then(data => {
+    userMessage.value.userNickname = data.userNickname;
+    userMessage.value.userDesc = data.userDesc;
+    userMessage.value.userGender = data.userGender;
+    userMessage.value.userAge = data.userAge;
+    userMessage.value.userAddress = data.userAddress;
+    console.log('父组件',userMessage.value)
+})
+
 const isshowcanvans = ref(false)
 const changeimg = function (data) {
     baseurl.value = data;
@@ -13,7 +35,6 @@ const changeimg = function (data) {
 }
 
 const editedimg = function(data){
-    // console.log('修改后的图片url',data)
     isshowcanvans.value = false;
     imgsrc.value = data;
 }
@@ -29,7 +50,7 @@ const baseurl = ref(null)
         <editimg @changeimg="changeimg" :imgsrc="imgsrc"></editimg>
     </div>
     <div class="editformcontainermsg">
-        <editform></editform>
+        <editform :initdata="userMessage"></editform>
     </div>
     <!-- 定位，全屏布局 -->
     <div v-if="isshowcanvans" class="changeimgincircle">

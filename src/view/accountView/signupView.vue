@@ -2,6 +2,12 @@
 import signupForm from '../../components/accountComponents/signupForm.vue';
 import signupHeader from '../../components/accountComponents/signupHeader.vue';
 
+
+
+import { useUserStore } from '../../store/useUserStore.js';
+
+
+
 </script>
 
 <template>

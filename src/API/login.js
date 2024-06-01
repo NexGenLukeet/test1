@@ -6,7 +6,8 @@ async function postlogin(data) {
         password: "123456"
     });
 
-    console.log(res);
+    // console.log(res);
+    return res;
 
 }
 
