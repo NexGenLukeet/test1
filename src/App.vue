@@ -16,11 +16,11 @@ watch(route, () => {
 
 <template>
   <router-view v-slot="{ Component }">
-    <Transition :name="routename" mode="out-in">
+    <!-- <Transition :name="routename" mode="out-in"> -->
       <component :is="Component"></component>
-    </Transition>
+    <!-- </Transition> -->
   </router-view>
-  <!-- <RouterView /> -->
+
 </template>
 
 <style>

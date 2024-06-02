@@ -7,7 +7,6 @@ import contractssearch from '../components/contractsComponents/contractssearch.v
 import getcontractAPI from '../API/getcontractAPI.js';
 import useAsyncState from '../hooks/useAsyncState.js';
 
-
 let { responsedata, isdone } = useAsyncState(getcontractAPI());
 
 

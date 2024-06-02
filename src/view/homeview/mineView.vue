@@ -23,6 +23,14 @@ watch(ychangeslow, () => {
     }
 })
 
+// 获取用户喜欢的列表
+import { videolikeAPI } from '../../API/videolikeAPI.js';
+const videomessagelist = ref([]);
+videolikeAPI('0c34a42d-f0e1-4f13-ad18-c6cdf7ccc060').then(res =>{
+    
+    videomessagelist.value = res.data.data
+})
+
 </script>
 <template>
     <div class="minechangeimgcontainer" ref="scrollContainer" :style="{ transform: `translateY(${ychangeslow}%)` }">
@@ -35,9 +43,12 @@ watch(ychangeslow, () => {
                 <mineIndex></mineIndex>
             </div>
             <div>
-
+                <div class="everyline" v-for="item,index1 in parseInt(videomessagelist.length/3 )">
+                    <div class="videolittlecontainer" v-for="item,index2 in 3">
+                        <img :src="videomessagelist[index1 * 3 + index2].Video.videoCover" alt="" style="width:100%;height:100%;">
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
     <div class="backpositionimg">
@@ -51,6 +62,16 @@ watch(ychangeslow, () => {
 </template>
 
 <style>
+.everyline{
+    width:100vw;
+    height: 160px;
+    display: flex;
+    .videolittlecontainer{
+        width: 33.33%;
+        height: 160px;
+        background-color: red;
+    }
+}
 .backpositionimg {
     position: absolute;
     top: 0;

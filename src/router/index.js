@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter ,createWebHashHistory} from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHashHistory } from 'vue-router'
 
 // 主页一级路由
 import home from '../view/home.vue';
@@ -7,6 +7,12 @@ import mainpage from '../view/homeview/mainPageView.vue';
 import followView from '../view/homeview/followView.vue';
 import messageView from '../view/homeview/messageView.vue';
 import mineView from '../view/homeview/mineView.vue';
+
+// messageView的三级路由
+import fans from '../view/homeview/messageView/fansView.vue'
+import wholike from '../view/homeview/messageView/wholikeView.vue'
+import atmi from '../view/homeview/messageView/atmiView.vue'
+import commentvideo from '../view/homeview/messageView/commentvideoView.vue'
 
 
 // 账户的登录和注册
@@ -32,7 +38,16 @@ const routes = [
     children: [
       { path: 'mainpage', component: mainpage },
       { path: 'follow', component: followView },
-      { path: 'message', component: messageView },
+      {
+        path: 'message',
+        component: messageView,
+        children: [
+          { path: 'fans', component: fans },
+          { path: 'wholike', component: wholike },
+          { path: 'atmi', component: atmi },
+          { path: 'commentvideo', component: commentvideo }
+        ]
+      },
       { path: 'mine', component: mineView },
     ]
   },
@@ -44,16 +59,16 @@ const routes = [
     ]
   },
   {
-    path:'/search',
-    component:search,
+    path: '/search',
+    component: search,
   },
   {
-    path:'/contracts',
-    component:contracts,
+    path: '/contracts',
+    component: contracts,
   },
   {
-    path:'/edit',
-    component:edit,
+    path: '/edit',
+    component: edit,
   }
 
 ]

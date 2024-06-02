@@ -1,16 +1,22 @@
 <script setup>
 import svgsearch from '../svgicon/svgsearch.vue';
+import {ref}from 'vue';
 
-const backback = () => {
-    
+const searchText = ref('34');
+
+const emit = defineEmits(['usersearch']);
+const usersearch = ()=> {
+    emit('usersearch',searchText);
 }
 </script>
 
 <template>
     <div class="backiconcontainer" @click="$router.back()">  < </div>
             <div class="topsearhinput">
-                <svgsearch></svgsearch>
-                <input type="text">
+                <div @click="usersearch">
+                     <svgsearch></svgsearch>
+                </div>
+                <input type="text"  v-model="searchText">
             </div>
 </template>
 

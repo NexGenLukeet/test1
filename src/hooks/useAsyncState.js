@@ -6,7 +6,6 @@ export default function (promise) {
 
     promise.then(res => {
         responsedata.value = res;
-    }).then(() => {
         isdone.value = true;
     })
 

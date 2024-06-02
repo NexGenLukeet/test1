@@ -19,6 +19,10 @@ const gotocontracts = () => {
     <div class="messagecontainerbody">
         <messagebody></messagebody>
     </div>
+    <div>
+        <!-- 关于消息界面的， -->
+        <RouterView></RouterView>
+    </div>
 </template>
 
 <style>

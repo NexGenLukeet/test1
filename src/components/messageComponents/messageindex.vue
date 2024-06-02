@@ -1,7 +1,8 @@
 <script setup>
+
 </script>
 <template>
-    <div class="onemessageindexitem">
+    <div class="onemessageindexitem" @click="$router.push({path:'/home/message/fans'})">
         <div style="background-color: #4f88fb;">
             <svg t="1717050791045" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="2615" width="32" height="32">
@@ -15,7 +16,7 @@
         </div>
         <p>粉丝</p>
     </div>
-    <div class="onemessageindexitem">
+    <div class="onemessageindexitem" @click="$router.push({path:'/home/message/wholike'})">
         <div style="background-color: #f8355f;">
             <svg t="1717050856318" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="3875" width="32" height="32">
@@ -26,7 +27,7 @@
         </div>
         <p>赞</p>
     </div>
-    <div class="onemessageindexitem">
+    <div class="onemessageindexitem" @click="$router.push({path:'/home/message/atmi'})">
         <div style="background-color: #1cc262">
             <svg t="1717050884195" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="4996" width="32" height="32">
@@ -37,7 +38,7 @@
         </div>
         <p>@我的</p>
     </div>
-    <div class="onemessageindexitem">
+    <div class="onemessageindexitem" @click="$router.push({path:'/home/message/commentvideo'})">
         <div style="background-color: #a753ec;">
             <svg t="1717050912522" class="icon" viewBox="0 0 1088 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="6174" width="32" height="32">
