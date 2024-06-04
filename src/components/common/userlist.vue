@@ -8,31 +8,49 @@ const prop = defineProps(['datalist'])
 //     userDesc:'',
 //     myRelation:'',
 // }]
+
+
+import {onMounted}from 'vue'
+
+const outscrollcontainer = ref(null)
+onMounted(()=>{
+    
+})
+
 </script>
 
 <template>
-    <div class="userliststyle">
-        <div v-for="item, index in prop.datalist">
-            <div class="one-user-overview">
-                <div class="one-user-overview-img">
-                    <img :src="'http://43.138.15.137:3000' + item.userAvatar" style="width: 100%;height:100%">
-                </div>
-                <div class="one-user-overview-textmsg">
-                    <div>{{ item.userNickname }}</div>
-                    <div>{{ item.userDesc }}</div>
-                </div>
-                <div class="one-user-overview-state">
-                    {{ item.myRelation }}
+    <div class="outscrollcontainer">
+        <div class="userliststyle">
+            <div v-for="item, index in prop.datalist">
+                <div class="one-user-overview">
+                    <div class="one-user-overview-img">
+                        <img :src="'http://43.138.15.137:3000' + item.userAvatar" style="width: 100%;height:100%">
+                    </div>
+                    <div class="one-user-overview-textmsg">
+                        <div>{{ item.userNickname }}</div>
+                        <div>{{ item.userDesc }}</div>
+                    </div>
+                    <div class="one-user-overview-state">
+                        {{ item.myRelation }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </template>
 
 <style>
+.outscrollcontainer{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 .userliststyle {
     height: 100%;
-    width:100vw;
+    width: 100vw;
     overflow: scroll;
     background-color: black;
 }

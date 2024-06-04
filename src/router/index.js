@@ -29,6 +29,9 @@ import contracts from '../view/contractsView.vue'
 // 编辑个人资料
 import edit from '../view/editMessage.vue'
 
+// 发布视频动态；
+import publish from '../view/publishUpdate.vue'
+
 const routes = [
   // { path: '/', redirect: '/account/login' },
   // { path: '/', redirect: '/edit' },
@@ -57,6 +60,11 @@ const routes = [
       { path: 'login', component: loginView },
       { path: 'signup', component: signupView }
     ]
+  },
+  {
+    path:'/publish',
+    component:publish,
+    
   },
   {
     path: '/search',
