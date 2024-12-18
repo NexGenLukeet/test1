@@ -4,14 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
+    "axios": "^1.7.2",
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",
+    
+    "pinyin-pro": "^3.21.0",
+
     "vant": "^4.9.0",
     "vue": "^3.4.21",
     "vue-hooks-plus": "^2.1.0",

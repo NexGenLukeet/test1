@@ -1,30 +1,50 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { Transition, watch, ref } from 'vue';
+import { useRoute } from 'vue-router';
+let route = useRoute();
+
+const routename = ref('mostmoveanmi')
+watch(route, () => {
+  console.log(route.path);
+  if (route.path == '/account/login') {
+    routename.value = 'mostmoveanmi'
+  } else {
+    routename.value = 'none'
+  }
+})
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <router-view v-slot="{ Component }">
+    <!-- <Transition :name="routename" mode="out-in"> -->
+      <component :is="Component"></component>
+    <!-- </Transition> -->
+  </router-view>
+
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+.mostmoveanmi-enter-active {
+  transition: all 0.3s ease-in-out;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.mostmoveanmi-leave-active {
+  transition: none;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.mostmoveanmi-enter-from {
+  opacity: 0;
+  transform: translateY(100vh);
+}
+
+.mostmoveanmi-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mostmoveanmi-leave-from {
+  transform: translateY(0);
+}
+
+.mostmoveanmi-leave-to {
+  transform: translateY(-100vh);
 }
 </style>

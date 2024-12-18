@@ -1,0 +1,89 @@
+import { createMemoryHistory, createRouter, createWebHashHistory } from 'vue-router'
+
+// 主页一级路由
+import home from '../view/home.vue';
+// 对应的二级路由；
+import mainpage from '../view/homeview/mainPageView.vue';
+import followView from '../view/homeview/followView.vue';
+import messageView from '../view/homeview/messageView.vue';
+import mineView from '../view/homeview/mineView.vue';
+
+// messageView的三级路由
+import fans from '../view/homeview/messageView/fansView.vue'
+import wholike from '../view/homeview/messageView/wholikeView.vue'
+import atmi from '../view/homeview/messageView/atmiView.vue'
+import commentvideo from '../view/homeview/messageView/commentvideoView.vue'
+
+
+// 账户的登录和注册
+import account from '../view/accountView.vue';
+import loginView from '../view/accountView/loginView.vue';
+import signupView from '../view/accountView/signupView.vue';
+
+// 专门处理搜索的视图；
+import search from '../view/searchView.vue';
+
+// 处理联系人的视图；
+import contracts from '../view/contractsView.vue'
+
+// 编辑个人资料
+import edit from '../view/editMessage.vue'
+
+// 发布视频动态；
+import publish from '../view/publishUpdate.vue'
+
+const routes = [
+  // { path: '/', redirect: '/account/login' },
+  // { path: '/', redirect: '/edit' },
+  { path: '/', redirect: '/home/mainpage' },
+  {
+    path: '/home', component: home,
+    children: [
+      { path: 'mainpage', component: mainpage },
+      { path: 'follow', component: followView },
+      {
+        path: 'message',
+        component: messageView,
+        children: [
+          { path: 'fans', component: fans },
+          { path: 'wholike', component: wholike },
+          { path: 'atmi', component: atmi },
+          { path: 'commentvideo', component: commentvideo }
+        ]
+      },
+      { path: 'mine', component: mineView },
+    ]
+  },
+  {
+    path: '/account', component: account,
+    children: [
+      { path: 'login', component: loginView },
+      { path: 'signup', component: signupView }
+    ]
+  },
+  {
+    path:'/publish',
+    component:publish,
+    
+  },
+  {
+    path: '/search',
+    component: search,
+  },
+  {
+    path: '/contracts',
+    component: contracts,
+  },
+  {
+    path: '/edit',
+    component: edit,
+  }
+
+]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+})
+
+export default router
